@@ -1,5 +1,5 @@
 import java.util.*;
-public class greatestProduct
+public class Main
 {
     public static void reverse(int[] array)
     {
@@ -28,13 +28,11 @@ public class greatestProduct
 		}
 		
 		Arrays.sort(arr);
-		reverse(arr);
-		
-		
-		for(int i = 0; i < size; i++){
-		    System.out.println(arr[i] + " ");
+		if(arr[0] < 0 && arr[1] < 0){
+		    System.out.println(arr[0] * arr[1] * arr[arr.length - 1]);
+		}else{
+		    reverse(arr);
+		    System.out.println(arr[0] * arr[1] * arr[2]);
 		}
-		
-		System.out.println(arr[0] * arr[1] * arr[2]);
 	}
 }
