@@ -1,45 +1,38 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-public class commonNum
-{
-	public static void main(String[] args) {
-        Map<Integer, Integer> map = new HashMap();
+import java.util.*;
+class commonNum{
+    public static void main(String[] args){
+        int m, n, k = 0;
         
-        int m,n, val=0, flag = 0, common = 0, k=0;
+        Map<Integer, Integer> map = new HashMap<>();
         Scanner s = new Scanner(System.in);
         m = s.nextInt();
         n = s.nextInt();
-
-        int[] commonNums = new int[m*n];
-        
+        int[] arr = new int[n];
         for(int i = 0; i < m; i++){
             for(int j = 0; j < n; j++){
-                
-                val = s.nextInt();
-                
-                if(map.containsKey(val)){
-                    map.put(val, map.get(val)+1);
-                    if(map.get(val) == m){
-                        commonNums[k++] = val;
-                        flag++;
+                int val = s.nextInt();
+                if(i == 0){
+                    if(!map.containsKey(val)){
+                        map.put(val, 1);
                     }
                 }else{
-                    map.put(val, 1);
+                    if(map.containsKey(val)){
+                        map.put(val, map.get(val)+1);
+                        if(map.get(val) == m){
+                            arr[k++] = val;
+                        }
+                    }
                 }
-                
+            }
+        }
+        if(k>0){
+            for(int i = 0; i <= k-1; i++){
+                System.out.println("Elements that are repeated in all rows are:");
+                System.out.println(arr[i]+ " ");
             }
             
-        }
-        
-        if(flag == 0){
-            System.out.println("no element is present in all rows");
         }else{
-            System.out.println("");
-            for(int i = 0; i <= k-1; i++){
-                System.out.println(commonNums[i]+" ");
-            }
+            System.out.println("No element is repeated in all rows.");
         }
-        
-	}
+    }
 }
